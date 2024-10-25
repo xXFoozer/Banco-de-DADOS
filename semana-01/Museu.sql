@@ -113,8 +113,32 @@ INSERT INTO obra_arte_artista (obra_arte_id, artista_id) VALUES (4,3);
 
 
 
-
+												--COMANDOS--
 -------------------------------------------------------------------------------------------------------------------------------------
+SELECT COUNT(*) total_obras_arte FROM obra_de_arte;
+
+SELECT 
+	o.titulo AS titulo_obra_de_arte,
+	o.ano_criacao AS ano_criacao_obra_de_arte,
+	a.nome AS nome_artista,
+	a.nacionalidade AS nacionalidade_artista
+FROM obra_de_arte AS o 
+JOIN obra_arte_artista AS oa ON o.id = oa.obra_arte_id
+JOIN artista AS a ON oa.artista_id = a.id
+
+------------------------------------------------------------------------------------------------------
+--mesmo do de cima so q com apelidos
+
+SELECT 
+	o.titulo AS titulo_obra_de_arte,
+	o.ano_criacao AS ano_criacao_obra_de_arte,
+	a.nome AS nome_artista,
+	a.nacionalidade AS nacionalidade_artista
+FROM obra_de_arte AS o 
+JOIN obra_arte_artista AS oa ON o.id = oa.obra_arte_id
+JOIN artista AS a ON oa.artista_id = a.id
+WHERE o.ano_criacao > 2023
+-----------------------------------------------------------------------------------------------------
 DROP TABLE visitantes;
 
 SELECT * FROM visitantes;
@@ -129,3 +153,5 @@ SELECT * FROM visitantes;
 -- ALTER TABLE usuarios ADD COLUMN ativo BOOLEAN DEFAULT TRUE 
 
 -- DROP TABLE usuarios
+
+-- ctrl + ; COMENTA!!!
