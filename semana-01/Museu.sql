@@ -139,6 +139,16 @@ JOIN obra_arte_artista AS oa ON o.id = oa.obra_arte_id
 JOIN artista AS a ON oa.artista_id = a.id
 WHERE o.ano_criacao > 2023
 -----------------------------------------------------------------------------------------------------
+
+SELECT * FROM exposicao AS ex
+JOIN visita AS vs ON ex.id = vs.exposicao_id
+JOIN visitantes AS vts ON vts.id = vs.visitante_id
+
+
+
+
+-----------------------------------------------------------------------------------------------------
+
 DROP TABLE visitantes;
 
 SELECT * FROM visitantes;
