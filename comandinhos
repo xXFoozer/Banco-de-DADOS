@@ -1,0 +1,80 @@
+-- SELECT * FROM veiculos
+
+-- SELECT MAX(preco_venda) FROM veiculos
+-- SELECT MAX(quilometragem) FROM veiculos
+
+-- SELECT SUM(preco_venda) FROM veiculos
+-- SELECT SUM(quilometragem) FROM veiculos
+
+-- SELECT AVG(preco_venda) FROM veiculos
+-- SELECT ROUND(AVG(preco_venda),2) FROM veiculos
+
+-- SELECT * FROM veiculos ORDER BY ano_fabricacao ASC
+-- SELECT COUNT (id) FROM veiculos
+
+-- SELECT modelo, count(id) as qtd FROM veiculos GROUP BY modelo
+
+-- SELECT * FROM clientes
+-- SELECT * FROM clientes WHERE id = 5
+-- SELECT * FROM clientes WHERE nome LIKE '%a%'
+-- SELECT * FROM clientes WHERE email LIKE '%@outlook%'
+-- SELECT * FROM clientes WHERE LOWER(email) LIKE LOWER('%@Gmail%')
+-- SELECT * FROM clientes WHERE LOWER(email) LIKE '_____@%'
+
+
+
+
+
+
+-- INSERT INTO veiculos (modelo, marca, ano_fabricacao, quilometragem, preco_venda, cor) VALUES
+-- ('Corolla', 'Toyota', 2018, 45000.00, 90000.00, 'BRANCO'),
+-- ('Civic', 'Honda', 2020, 30000.00, 120000.00, 'PRETO'),
+-- ('Onix', 'Chevrolet', 2015, 80000.00, 55000.00, 'VERMELHO'),
+-- ('HB20', 'Hyundai', 2017, 50000.00, 62000.00, 'PRATA'),
+-- ('Gol', 'Volkswagen', 2010, 120000.00, 30000.00, 'AZUL');
+
+-- INSERT INTO vendas (cliente_id, veiculo_id, valor_total, data_venda, metodo_pagamento) VALUES
+-- (1, 1, 90000.00, '2023-05-10', 'PIX'),
+-- (2, 2, 120000.00, '2024-06-15', 'DINHEIRO'),
+-- (3, 3, 55000.00, '2022-11-20', 'PIX'),
+-- (4, 4, 62000.00, '2021-08-18', 'CARTAO'),
+-- (5, 5, 30000.00, '2020-02-10', 'DINHEIRO');
+
+-- INSERT INTO clientes (nome, email) VALUES
+-- ('Ana Maria', 'ana.maria@outlook.com'),
+-- ('Joao Silva', 'joao.silva@gmail.com'),
+-- ('Maria Clara', 'maria.clara@hotmail.com'),
+-- ('Pedro Rocha', 'pedro.rocha@outlook.com'),
+-- ('Luiza Almeida', 'luiza.almeida@yahoo.com');
+
+-- SELECT * FROM vendas
+
+-- ALTER TABLE vendas ADD CONSTRAINT fk_cliente FOREIGN KEY (cliente_id) REFERENCES clientes(id)
+-- ALTER TABLE vendas ADD CONSTRAINT fk_veiculo FOREIGN KEY (veiculo_id) REFERENCES veiculos(id)
+
+-- CREATE TYPE MET_PAG AS ENUM ('PIX','DINHEIRO','CARTAO')
+
+-- CREATE TABLE vendas(
+-- 	id SERIAL PRIMARY KEY,
+-- 	valor_total DECIMAL(10,2) NOT NULL,
+-- 	data_venda DATE NOT NULL,
+-- 	cliente_id INTEGER NOT NULL,
+-- 	veiculo_id INTEGER NOT NULL,
+-- 	metodo_pagamento MET_PAG NOT NULL
+-- )
+
+-- CREATE TABLE clientes (
+-- id SERIAL PRIMARY KEY,
+-- 	nome VARCHAR(60)NOT NULL,
+-- 	email VARCHAR(60)NOT NULL UNIQUE
+-- )
+
+-- CREATE TABLE veiculos(
+-- 	id SERIAL PRIMARY KEY,
+-- 	modelo VARCHAR(50) NOT NULL,
+-- 	marca  VARCHAR(90) NOT NULL,
+-- 	ano_fabricacao INTEGER NOT NULL,
+-- 	quilometragem DECIMAL(10,2) NOT NULL,
+-- 	preco_venda DECIMAL(10,2) NOT NULL,
+-- 	cor VARCHAR(20)NOT NULL
+-- );
